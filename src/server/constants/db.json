@@ -1,4 +1,4 @@
 {
   "dev": "mongodb://localhost/fifi-pet-shop",
-  "prod": "mongodb://localhost/fifi-pet-shop"
+  "prod": "mongodb://admin:admin@ds151127.mlab.com:51127/fifi-pet-shop"
 }

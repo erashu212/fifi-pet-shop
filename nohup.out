@@ -1,0 +1,14 @@
+2016-11-11T16:37:42.737+0530 I CONTROL  [initandlisten] MongoDB starting : pid=37611 port=27017 dbpath=/data/db 64-bit host=Ashutoshs-MacBook-Pro-2.local
+2016-11-11T16:37:42.737+0530 I CONTROL  [initandlisten] db version v3.2.10
+2016-11-11T16:37:42.738+0530 I CONTROL  [initandlisten] git version: 79d9b3ab5ce20f51c272b4411202710a082d0317
+2016-11-11T16:37:42.738+0530 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.0.2j  26 Sep 2016
+2016-11-11T16:37:42.738+0530 I CONTROL  [initandlisten] allocator: system
+2016-11-11T16:37:42.738+0530 I CONTROL  [initandlisten] modules: none
+2016-11-11T16:37:42.738+0530 I CONTROL  [initandlisten] build environment:
+2016-11-11T16:37:42.738+0530 I CONTROL  [initandlisten]     distarch: x86_64
+2016-11-11T16:37:42.738+0530 I CONTROL  [initandlisten]     target_arch: x86_64
+2016-11-11T16:37:42.738+0530 I CONTROL  [initandlisten] options: {}
+2016-11-11T16:37:42.738+0530 E NETWORK  [initandlisten] listen(): bind() failed errno:48 Address already in use for socket: 0.0.0.0:27017
+2016-11-11T16:37:42.738+0530 E NETWORK  [initandlisten]   addr already in use
+2016-11-11T16:37:42.738+0530 E STORAGE  [initandlisten] Failed to set up sockets during startup.
+2016-11-11T16:37:42.738+0530 I CONTROL  [initandlisten] dbexit:  rc: 48
