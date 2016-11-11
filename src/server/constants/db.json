@@ -1,0 +1,4 @@
+{
+  "dev": "mongodb://localhost/fifi-pet-shop",
+  "prod": "mongodb://localhost/fifi-pet-shop"
+}
