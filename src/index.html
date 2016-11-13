@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    <%= webpackConfig.metadata.title %>
+  </title>
+  <base href="<%= webpackConfig.metadata.baseUrl %>">
+  <meta name="description" content="<%= webpackConfig.metadata.title %>">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+</head>
+<body>
+  <app></app>
+
+  <script>
+    window.apiServer = '<%= webpackConfig.metadata.apiServer %>';
+  </script>
+</body>
+
+</html>

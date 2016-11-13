@@ -1,13 +1,11 @@
 {
-  "name": "fifipetshp",
+  "name": "fifipetshop",
   "version": "1.0.0",
   "description": "Fifi's Pet Shop, where pets prefer.",
-  "main": "node server/server.js",
   "scripts": {
-    "start": "npm run start:server && webpack-dev-server --inline --progress --port 3000",
-    "start:server": "node src/server/server.js",
+    "start": "webpack-dev-server --inline --progress --port 3000",
     "test": "karma start",
-    "build:prod": "rimraf browser/build && webpack --config src/browser/config/webpack.prod.js --progress --profile --bail"
+    "build:prod": "rimraf build && webpack --config config/webpack.prod.js --progress --profile --bail"
   },
   "repository": {
     "type": "github",
@@ -29,19 +27,19 @@
     "@angular/platform-browser": "~2.1.1",
     "@angular/platform-browser-dynamic": "~2.1.1",
     "@angular/router": "~3.1.1",
-    "@types/express": "^4.0.33",
-    "@types/node": "^6.0.45",
     "core-js": "^2.4.1",
-    "express-content-length-validator": "^1.0.0",
-    "express-session": "^1.14.2",
-    "mongoose": "^4.6.7",
-    "morgan": "^1.7.0",
-    "os": "^0.1.1",
+    "lodash": "^4.16.6",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.38",
+    "@types/bootstrap": "^3.3.32",
+    "@types/core-js": "^0.9.34",
+    "@types/jasmine": "^2.5.35",
+    "@types/jquery": "^2.0.33",
+    "@types/js-cookie": "^2.0.28",
+    "@types/node": "^6.0.45",
     "angular2-router-loader": "^0.3.3",
     "angular2-template-loader": "^0.4.0",
     "autoprefixer": "^6.5.1",
