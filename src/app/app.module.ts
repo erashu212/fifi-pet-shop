@@ -15,7 +15,6 @@ import { appRoutes } from './routing'
 
 @NgModule({
   declarations: [ AppComponent ],
-  entryComponents: [ AppComponent ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
@@ -30,6 +29,7 @@ import { appRoutes } from './routing'
   ],
   exports: [
     RouterModule
-  ]
+  ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,19 +1,19 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProductComponent } from './routes/product';
+import { ProductRouteComponent } from './routes/product/product.component';
 
 export const appRoutes: Routes = [
   {
     path: '',
-    component: ProductComponent
+    component: ProductRouteComponent
   },
   {
-    path: '/login',
+    path: 'login',
     loadChildren: './routes/login/login.component#LoginModule'
   },
   {
-    path: '/register',
+    path: 'register',
     loadChildren: './routes/register/register.component#RegisterModule'
   },
   {

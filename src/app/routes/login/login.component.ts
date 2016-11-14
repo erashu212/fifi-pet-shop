@@ -1,27 +1,26 @@
 import { Component, Input, NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router';
+
+import { LoginModule as Module } from '../../feat/login/login.component';
 
 @Component({
-  selector: 'login',
-  template: require('./login.component.html')
+  template: '<login></login>'
 })
-export class LoginComponent { 
-}
+export class LoginRouteComponent {}
 
 const routes: Routes = [
-  { path: '', component: LoginComponent }
-]
+  { path: '', component: LoginRouteComponent }
+];
 
 @NgModule({
-  declarations: [ LoginComponent ],
+  declarations: [ LoginRouteComponent ],
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    Module
   ],
   exports: [
-    LoginComponent,
     RouterModule
   ]
 })
-export class LoginModule { 
-
+export class LoginModule {
 }

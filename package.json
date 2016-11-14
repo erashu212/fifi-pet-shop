@@ -5,7 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 3000",
     "test": "karma start",
-    "build:prod": "rimraf build && webpack --config config/webpack.prod.js --progress --profile --bail"
+    "build": "rimraf build && webpack --config config/webpack.prod.js --progress --profile --bail"
   },
   "repository": {
     "type": "github",

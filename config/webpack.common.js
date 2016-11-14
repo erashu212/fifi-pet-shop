@@ -9,13 +9,13 @@ var autoprefixer = require('autoprefixer');
 var helpers = require('./helpers');
 
 var METADATA = {
-  title: 'WordBrewery',
+  title: 'Fifi Pet Shop',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
 
 if (METADATA.isDevServer) {
-  METADATA.apiServer = 'https://wordbrewery.azurewebsites.net';
+  METADATA.apiServer = 'https://fifi-pet-shop-api.herokuapp.com';
 } else {
   METADATA.apiServer = '';
 }
@@ -80,36 +80,6 @@ module.exports = {
       template: 'src/index.html',
       chunksSortMode: 'dependency'
     }),
-
-    new CopyWebpackPlugin([
-      {
-        from: helpers.root('src', 'fb-login-success.html'),
-        to: helpers.root('build', 'fb-login-success.html')
-      },
-      {
-        from: helpers.root('src', 'google-login-success.html'),
-        to: helpers.root('build', 'google-login-success.html')
-      },
-      {
-        from: helpers.root('src', 'resources'),
-        to: helpers.root('build', 'resources')
-      },
-      {
-        from: helpers.root('node_modules', 'jquery/dist/jquery.min.js'),
-        to: helpers.root('build', 'js')
-      },
-      {
-        from: helpers.root('node_modules', 'chartist/dist/chartist.min.css'),
-        to: helpers.root('build', 'js')
-      },
-      {
-        from: helpers.root('node_modules', 'chartist/dist/chartist.min.js'),
-        to: helpers.root('build', 'js')
-      },
-      {
-        from: helpers.root('node_modules', 'chartist-plugin-fill-donut/dist/chartist-plugin-fill-donut.min.js'),
-        to: helpers.root('build', 'js')
-      }]),
 
     new webpack.ProvidePlugin({
       jQuery: 'jquery',

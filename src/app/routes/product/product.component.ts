@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { ProductModule as Module } from '../../feat/product'
 
 @Component({
-  template: 'product'
+  template: '<product></product>'
 })
 export class ProductRouteComponent { }
 

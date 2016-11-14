@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterModule as Module } from '../../feat/register/register.component';
 
 @Component({
-  template: require('./register.component.html')
+  template: '<register></register>'
 })
 export class RegisterRouteComponent {}
 
