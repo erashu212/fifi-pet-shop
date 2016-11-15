@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { Http, RequestMethod } from '@angular/http';
 
-import { httpRequest } from '../../../core/httpRequest';
+import { httpRequest } from '../../core/httpRequest';
 
 const _ = require('lodash');
 
@@ -38,4 +38,11 @@ export class ProductService {
 
     return httpRequest(this.http, req);
   }
- }
+}
+ 
+@NgModule({
+    providers: [
+        ProductService
+    ]
+})
+export class ProductServiceModule {}

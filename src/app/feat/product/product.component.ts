@@ -8,7 +8,7 @@ const io = require('socket.io-client/socket.io');
 
 import { InfiniteScrollModule } from '../../comp/infinite-scroll/infinite-scroll'
 
-import { ProductService, IProduct } from './shared/product.service';
+import { ProductServiceModule, IProduct } from '../shared/product.service';
 
 declare const apiServer;
 
@@ -85,10 +85,8 @@ export class ProductComponent {
     imports: [
         CommonModule,
         RouterModule,
-        InfiniteScrollModule
-    ],
-    providers: [
-        ProductService
+        InfiniteScrollModule,
+        ProductServiceModule
     ]
 })
 export class ProductModule { }
