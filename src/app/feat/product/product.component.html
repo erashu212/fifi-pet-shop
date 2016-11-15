@@ -1,48 +1,15 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-3">
-            <div class="card">
+<div class="container" infinite-scroll (onScroll)="loadMore($event);">
+    <div class="row"
+     *ngFor="let rows of products">
+        <div class="col-xs-3" *ngFor="let product of rows">
+            <a class="card">
                <img class="card-img-top" style="width:100%;" src="http://i.huffpost.com/gen/3753474/images/o-PUG-facebook.jpg" alt="Card image cap">
                 <div class="card-block">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up
-                        the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h4 class="card-title">{{product?.name}}</h4>
+                    <p class="card-text">{{product?.desc}}</p>
+                    <h6 class="card-text">Rs. {{product?.price}}</h6>
                 </div>
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="card">
-                <img style="width:100%;" class="card-img-top" src="http://i.huffpost.com/gen/3753474/images/o-PUG-facebook.jpg" alt="Card image cap">
-                <div class="card-block">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up
-                        the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="card">
-                <img style="width:100%;" class="card-img-top" src="http://i.huffpost.com/gen/3753474/images/o-PUG-facebook.jpg" alt="Card image cap">
-                <div class="card-block">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up
-                        the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-3">
-            <div class="card">
-                <img style="width:100%;" class="card-img-top" src="http://i.huffpost.com/gen/3753474/images/o-PUG-facebook.jpg" alt="Card image cap">
-                <div class="card-block">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up
-                        the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>

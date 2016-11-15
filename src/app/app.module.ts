@@ -14,22 +14,23 @@ import { ProductModule } from './routes/product/product.component'
 import { appRoutes } from './routing'
 
 @NgModule({
-  declarations: [ AppComponent ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes),
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ProductModule
-  ],
-  providers: [
-    { provide: BrowserXhr, useClass: CORSBrowserXHr },
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
-  ],
-  exports: [
-    RouterModule
-  ],
-  bootstrap: [ AppComponent ]
+    declarations: [ AppComponent ],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        RouterModule.forRoot(appRoutes),
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ProductModule
+    ],
+    providers: [
+        { provide: BrowserXhr, useClass: CORSBrowserXHr },
+        { provide: LocationStrategy, useClass: HashLocationStrategy }
+    ],
+    exports: [
+        RouterModule
+    ],
+    bootstrap: [ AppComponent ]
 })
 export class AppModule { }
