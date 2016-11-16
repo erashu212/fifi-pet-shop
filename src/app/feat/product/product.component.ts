@@ -8,7 +8,7 @@ const io = require('socket.io-client/socket.io');
 
 import { InfiniteScrollModule } from '../../comp/infinite-scroll/infinite-scroll'
 
-import { ProductServiceModule, IProduct } from '../shared/product.service';
+import { ProductServiceModule, IProduct, ProductService } from '../shared/product.service';
 
 declare const apiServer;
 
@@ -61,7 +61,9 @@ export class ProductComponent {
         this._subs.push(
             this.productSvc.getProducts(start, end)
                 .subscribe(res => {
-                    this.products = this.groupByRow(res);
+                    if (res.status && res.data) {
+                        this.products = this.groupByRow(res.data.products);
+                    }    
                 })
         );
     }

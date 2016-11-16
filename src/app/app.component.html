@@ -5,23 +5,25 @@
                 <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link" [routerLink]="['..']">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item float-xs-right" routerLinkActive="active">
+                <li *ngIf="!(userSvc.isLoggedIn$ | async)" class="nav-item float-xs-right" routerLinkActive="active">
                     <a class="nav-link" [routerLink]="['./register']">Register</a>
                 </li>
-                <li class="nav-item float-xs-right" routerLinkActive="active">
+                <li *ngIf="!(userSvc.isLoggedIn$ | async)" class="nav-item float-xs-right" routerLinkActive="active">
                     <a class="nav-link" [routerLink]="['./login']">Login</a>
                 </li>
-                <li *ngIf="false" class="nav-item dropdown float-xs-right">
-                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown link
+
+                <div class="nav navbar-nav pull-lg-right" *ngIf="(userSvc.isLoggedIn$ | async)">
+                    <div class="nav-item float-xs-right dropdown">
+                        <a class="nav-link dropdown-toggle" id="headermenu" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+        {{user?.name || user?.username}}
       </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-menu" aria-labelledby="headermenu">
+                            <a class="dropdown-item" routerLink="/admin/product">Dashboard</a>
+                            <a class="dropdown-item" href="" (click)="logout($event)">Logout</a>
+                        </div>
                     </div>
-                </li>
+                </div>
             </ul>
         </div>
     </nav>

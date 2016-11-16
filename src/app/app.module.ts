@@ -11,10 +11,12 @@ import { AppComponent } from './app.component';
 
 import { ProductModule } from './routes/product/product.component'
 
-import { appRoutes } from './routing'
+import { appRoutes, appRoutingProviders } from './routing';
+
+import { UserServiceModule } from './feat/shared/user.service';
 
 @NgModule({
-    declarations: [ AppComponent ],
+    declarations: [AppComponent],
     imports: [
         BrowserModule,
         HttpModule,
@@ -22,15 +24,17 @@ import { appRoutes } from './routing'
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        ProductModule
+        ProductModule,
+        UserServiceModule
     ],
     providers: [
         { provide: BrowserXhr, useClass: CORSBrowserXHr },
-        { provide: LocationStrategy, useClass: HashLocationStrategy }
+        { provide: LocationStrategy, useClass: HashLocationStrategy },
+        appRoutingProviders
     ],
     exports: [
         RouterModule
     ],
-    bootstrap: [ AppComponent ]
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
