@@ -1,25 +1,31 @@
 import { Component, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
+import { RouterModule, Routes, ActivatedRoute, Router } from '@angular/router';
 
 import { ProductFormModule } from '../../../../feat/product/product-form/product-form.component';
 
 @Component({
     template: `
-        <product-form [id]="(id$ | async)"></product-form>
+        <product-form [id]="(id$ | async)" (onSubmit)="onSubmit($event);"></product-form>
     `
 })
 export class ProductEditComponent {
 
     private id$: any
 
-    constructor(private route: ActivatedRoute) { }
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router) { }
 
-    ngOnInit() { 
+    onSubmit(res: any) {
+        if (res.status) {
+            this.router.navigateByUrl('/admin/product');
+        }
+    }
+
+    ngOnInit() {
         this.id$ = this.route.params.map(p => p[ 'id' ])
     }
- }
+}
 
 const routes: Routes = [
     {
@@ -33,9 +39,6 @@ const routes: Routes = [
     exports: [ ProductEditComponent, RouterModule ],
     imports: [
         RouterModule.forChild(routes),
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
         ProductFormModule
     ]
 })

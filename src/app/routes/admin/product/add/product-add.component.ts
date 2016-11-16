@@ -1,16 +1,22 @@
 import { Component, NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, Router } from '@angular/router';
 
 import { ProductFormModule } from '../../../../feat/product/product-form/product-form.component';
 
 @Component({
     template: `
-        <product-form></product-form>
+        <product-form (onSubmit)="onSubmit($event);"></product-form>
     `
 })
 export class ProductAddComponent {
+
+    constructor(private router: Router) { }
+
+    onSubmit(res: any) { 
+        if (res.status) { 
+            this.router.navigateByUrl('/admin/product');
+        }
+    }
 }
 
 const routes: Routes = [
@@ -25,9 +31,6 @@ const routes: Routes = [
     exports: [ ProductAddComponent, RouterModule ],
     imports: [
         RouterModule.forChild(routes),
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
         ProductFormModule
     ]
 })

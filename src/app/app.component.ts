@@ -25,17 +25,11 @@ export class AppComponent {
                 .subscribe(res => this.user = res)
         );
 
-        this._subs.push(
-            this.router.events.subscribe(evt => { 
-                if (evt instanceof NavigationStart) { 
-                    this.userSvc.getLoggedInUser();
-                }
-            })
-        )
+        this.userSvc.getLoggedInUser();
 
     }
 
-    ngOnDestroy() { 
+    ngOnDestroy() {
         while (this._subs.length) this._subs.pop().unsubscribe();
     }
 

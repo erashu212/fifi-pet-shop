@@ -5,6 +5,8 @@ import { HttpModule, BrowserXhr } from '@angular/http';
 import { BrowserModule, platformBrowser } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
+import { ToasterModule } from 'angular2-toaster/angular2-toaster';
+
 import { CORSBrowserXHr } from './core/httpRequest';
 
 import { AppComponent } from './app.component';
@@ -25,7 +27,8 @@ import { UserServiceModule } from './feat/shared/user.service';
         FormsModule,
         ReactiveFormsModule,
         ProductModule,
-        UserServiceModule
+        UserServiceModule,
+        ToasterModule
     ],
     providers: [
         { provide: BrowserXhr, useClass: CORSBrowserXHr },

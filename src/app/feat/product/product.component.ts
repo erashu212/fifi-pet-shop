@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 const io = require('socket.io-client/socket.io');
 
+import { ToasterService } from 'angular2-toaster/angular2-toaster';
+
 import { InfiniteScrollModule } from '../../comp/infinite-scroll/infinite-scroll'
 
 import { ProductServiceModule, IProduct, ProductService } from '../shared/product.service';
@@ -23,26 +25,25 @@ export class ProductComponent {
     private currentPage: number = 0;
     private itemPerPage: number = 10;
 
-    constructor(private productSvc: ProductService) {
+    constructor(
+        private productSvc: ProductService,
+        private toastrService: ToasterService
+    ) {
     }
 
     ngOnInit() {
         let socket = io.connect(`${apiServer}`);
 
-        socket.on('product:read', (product) => {
-            console.log('product:read', product)
-        });
-
         socket.on('product:added', (product) => {
-            console.log('product:added', product)
+            this.toastrService.pop('success', 'A new product added', product.name);
         });
 
         socket.on('product:updated', (product) => {
-            console.log('product:updated', product)
+            this.toastrService.pop('success', 'Product updated', product.name);
         });
 
         socket.on('product:deleted', (product) => {
-            console.log('product:deleted', product)
+            this.toastrService.pop('success', 'Product deleted', '');
         });
 
         this.getProducts(this.currentPage, this.itemPerPage);
@@ -63,7 +64,7 @@ export class ProductComponent {
                 .subscribe(res => {
                     if (res.status && res.data) {
                         this.products = this.groupByRow(res.data.products);
-                    }    
+                    }
                 })
         );
     }

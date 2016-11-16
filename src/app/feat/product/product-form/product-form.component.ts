@@ -1,4 +1,4 @@
-import { Component, NgModule, Input, SimpleChange } from '@angular/core';
+import { Component, NgModule, Input, SimpleChange, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
@@ -12,6 +12,8 @@ import { ProductServiceModule, IProduct, ProductService } from '../../shared/pro
 })
 export class ProductFormComponent {
     @Input() id: string = null;
+
+    @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
 
     private productForm: FormGroup;
 
@@ -56,7 +58,6 @@ export class ProductFormComponent {
     }
 
     ngOnChanges(data: SimpleChange) {
-        debugger;
         if (data && data['id'] && data['id'].currentValue) {
             this.getProductById(data[ 'id' ].currentValue)
         }
@@ -126,14 +127,10 @@ export class ProductFormComponent {
 
             if (this.id) {
                 this.productSvc.updateProduct(personObj, this.id)
-                    .subscribe((res: any) => {
-
-                    })
+                    .subscribe(this.onSubmit)
             } else {
                 this.productSvc.createProduct(personObj)
-                    .subscribe((res: any) => {
-
-                    })
+                    .subscribe(this.onSubmit)
             }
         }
     }
