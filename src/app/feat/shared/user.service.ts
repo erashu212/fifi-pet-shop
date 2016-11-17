@@ -76,7 +76,7 @@ export class UserService {
 
     register(username: string, password: string) {
         let req = {
-            url: '/api/register',
+            url: '/api/users',
             method: RequestMethod.Post,
             body: JSON.stringify({
                 username: username,
