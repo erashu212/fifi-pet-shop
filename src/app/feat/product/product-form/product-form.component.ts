@@ -17,48 +17,18 @@ export class ProductFormComponent {
 
     private productForm: FormGroup;
 
-    private _defaultProduct = {
-        sku: null,
-        name: null,
-        category: {
-            name: null,
-            desc: null
-        },
-        price: {
-            amount: null,
-            discount: null
-        },
-        inventory: {
-            total: null,
-            purchased: null
-        },
-        isActive: true,
-        desc: null,
-        attrs: {
-            age: null,
-            weight: null,
-            breed: null,
-            img: null
-        },
-        seller: {
-            name: null,
-            address: null,
-            contact: null
-        }
-    }
-
     constructor(
         private _fb: FormBuilder,
         private productSvc: ProductService,
         private route: ActivatedRoute
     ) { }
 
-    ngOnInit() { 
+    ngOnInit() {
         this.initValidation();
     }
 
     ngOnChanges(data: SimpleChange) {
-        if (data && data['id'] && data['id'].currentValue) {
+        if (data && data[ 'id' ] && data[ 'id' ].currentValue) {
             this.getProductById(data[ 'id' ].currentValue)
         }
     }
@@ -71,12 +41,15 @@ export class ProductFormComponent {
             'category': new FormControl('', Validators.required),
             'amount': new FormControl('', Validators.required),
             'qty': new FormControl('', Validators.required),
-            'description': new FormControl()
+            'description': new FormControl(),
+            'image': new FormControl()
         });
     }
 
     private updateFormAndValidationState(
-        name: string, category: string, amount: number, qty: number, desc: string
+        name: string, category: string, amount: number, qty: number,
+        desc: string,
+        image: string
     ) {
 
         this.productForm.controls[ 'name' ].setValue(name);
@@ -84,6 +57,7 @@ export class ProductFormComponent {
         this.productForm.controls[ 'amount' ].setValue(amount);
         this.productForm.controls[ 'qty' ].setValue(qty);
         this.productForm.controls[ 'description' ].setValue(desc);
+        this.productForm.controls[ 'image' ].setValue(image);
     }
 
     private getProductById(id: string) {
@@ -95,7 +69,8 @@ export class ProductFormComponent {
                         res.data.category.name,
                         res.data.price.amount,
                         res.data.inventory.total,
-                        res.data.desc
+                        res.data.desc,
+                        res.data.attrs.img
                     );
                 }
             })
@@ -108,22 +83,36 @@ export class ProductFormComponent {
             let qty = this.productForm.controls[ 'qty' ].value;
             let amount = this.productForm.controls[ 'amount' ].value;
             let desc = this.productForm.controls[ 'description' ].value;
+            let img = this.productForm.controls[ 'image' ].value;
 
-            let personObj = Object.assign({}, this._defaultProduct, {
+            let personObj = {
                 name: name,
                 desc: desc,
                 'category': {
                     name: category,
                     desc: category
                 },
+                inventory: {
+                    total: qty,
+                    purchased: null
+                },
+                isActive: true,
                 price: {
                     amount: amount,
                     discount: null
                 },
-                inventory: {
-                    total: qty
+                attrs: {
+                    age: null,
+                    weight: null,
+                    breed: null,
+                    img: img
+                },
+                seller: {
+                    name: null,
+                    address: null,
+                    contact: null
                 }
-            });
+            };
 
             if (this.id) {
                 this.productSvc.updateProduct(personObj, this.id)

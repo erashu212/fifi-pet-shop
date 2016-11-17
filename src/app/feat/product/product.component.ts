@@ -22,8 +22,9 @@ export class ProductComponent {
 
     private _subs: Array<Subscription> = [];
     private products: Array<IProduct> = [];
+    private groupedProducts: Array<IProduct> = [];
     private currentPage: number = 0;
-    private itemPerPage: number = 10;
+    private itemPerPage: number = 50;
 
     constructor(
         private productSvc: ProductService,
@@ -35,15 +36,18 @@ export class ProductComponent {
         let socket = io.connect(`${apiServer}`);
 
         socket.on('product:added', (product) => {
-            this.toastrService.pop('success', 'A new product added', product.name);
+            this.toastrService.pop('success', `${product.name}`, 'This product has been added.');
+            this.getProducts(this.currentPage, this.itemPerPage);
         });
 
         socket.on('product:updated', (product) => {
-            this.toastrService.pop('success', 'Product updated', product.name);
+            this.toastrService.pop('success', `${product.name}`, 'This product has been updated.');
+            this.getProducts(this.currentPage, this.itemPerPage);
         });
 
-        socket.on('product:deleted', (product) => {
-            this.toastrService.pop('success', 'Product deleted', '');
+        socket.on('product:deleted', (id) => {
+            this.toastrService.pop('error', 'Product deleted', '');
+            this.getProducts(this.currentPage, this.itemPerPage);
         });
 
         this.getProducts(this.currentPage, this.itemPerPage);
@@ -63,7 +67,8 @@ export class ProductComponent {
             this.productSvc.getProducts(start, end)
                 .subscribe(res => {
                     if (res.status && res.data) {
-                        this.products = this.groupByRow(res.data.products);
+                        this.products = res.data.products;
+                        this.groupedProducts = this.groupByRow(res.data.products);
                     }
                 })
         );

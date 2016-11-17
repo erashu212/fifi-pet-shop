@@ -40,6 +40,8 @@ export class AppComponent {
                     sessionStorage.removeItem('user');
                     this.userSvc.isLoggedIn$.next(false);
                     this.userSvc.user$.next(null);
+
+                    this.router.navigate([ '..' ]);
                 }
             })
     }

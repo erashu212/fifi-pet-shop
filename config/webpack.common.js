@@ -107,6 +107,7 @@ module.exports = {
             format: '  build ' + chalk.blue.bold(':bar') + chalk.green.bold(':percent') + ' (:elapsed seconds)',
             clear: false
         }),
+
         new webpack.DefinePlugin({
             'ENV': JSON.stringify(METADATA.ENV),
             'process.env': {
@@ -114,7 +115,13 @@ module.exports = {
                 'NODE_ENV': JSON.stringify(METADATA.ENV),
                 'apiServer': JSON.stringify(METADATA.apiServer)
             }
-        })
+        }),
+
+        new CopyWebpackPlugin([
+            {
+                from: helpers.root('node_modules', 'angular2-toaster/lib/toaster.css'),
+                to: helpers.root('build', 'css/toaster.css')
+            }])
     ],
     node: { global: 'window', progress: false, crypto: 'empty', module: false, clearImmediate: false, setImmediate: false }
 };

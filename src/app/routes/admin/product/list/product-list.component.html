@@ -1,46 +1,64 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-2 float-xl-right">
-            <a routerLink="/admin/product/add" class="btn btn-primary">Add </a>
-        </div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-xl-12">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>Total Qty</th>
-                        <th>Purchased Qty</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let product of products; let idx = index;">
-                        <td>
-                            <b>{{product?.name}}</b>
-                        </td>
-                        <td>{{product?.category?.name}}</td>
-                        <td>{{product?.price?.amount}}</td>
-                        <td>{{product?.inventory?.total}}</td>
-                        <td>{{product?.inventory?.purchased}}</td>
-                        <td>
-                            <a 
-                            routerLink="/admin/product/edit/{{product?._id}}" class="btn btn-sm btn-info">Edit</a>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2 float-xl-right">
+                    <a routerLink="/admin/product/add" class="btn btn-primary">Add </a>
+                </div>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Total Qty</th>
+                                <th>Image</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of products; let idx = index;">
+                                <td>
+                                    <b>{{product?.name}}</b>
+                                </td>
+                                <td>{{product?.category?.name}}</td>
+                                <td>{{product?.price?.amount | number}}</td>
+                                <td>{{product?.inventory?.total}}</td>
+                                <td>
+                                    <img style="height:150px; width:150px;" 
+                                    src="{{product?.attrs.img}}" alt="{{product?.category?.name}}" />
+                                </td>
+                                <td>
+                                    <a routerLink="/admin/product/edit/{{product?._id}}" class="btn btn-sm btn-info">Edit</a>
 
-                            <button type="button" class="btn btn-sm btn-danger" (click)="deleteProduct(product?._id);">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                                    <button type="button" class="btn btn-sm btn-danger" (click)="deleteProduct(product?._id);">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-12">
-            <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
-        </div>
+        <!--<div class="col-md-3">
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let ticker of tickers">
+                    <div class="card">
+                        <div class="card-block">
+                            <h4 class="card-title">{{ticker?.title}}</h4>
+                            <p class="card-text">{{ticker?.message}}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>-->
     </div>
 </div>

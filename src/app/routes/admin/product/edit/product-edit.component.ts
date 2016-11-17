@@ -1,4 +1,5 @@
 import { Component, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule, Routes, ActivatedRoute, Router } from '@angular/router';
 
 import { ProductFormModule } from '../../../../feat/product/product-form/product-form.component';
@@ -38,6 +39,7 @@ const routes: Routes = [
     declarations: [ ProductEditComponent ],
     exports: [ ProductEditComponent, RouterModule ],
     imports: [
+        CommonModule,
         RouterModule.forChild(routes),
         ProductFormModule
     ]

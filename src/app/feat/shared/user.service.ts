@@ -67,7 +67,7 @@ export class UserService {
 
     logout() {
         let req = {
-            url: '/api/login',
+            url: '/api/logout',
             method: RequestMethod.Delete
         }
 

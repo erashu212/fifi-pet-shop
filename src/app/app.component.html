@@ -19,8 +19,8 @@
         {{user?.name || user?.username}}
       </a>
                         <div class="dropdown-menu" aria-labelledby="headermenu">
-                            <a class="dropdown-item" routerLink="/admin/product">Dashboard</a>
-                            <a class="dropdown-item" href="" (click)="logout($event)">Logout</a>
+                            <a *ngIf="user?.isAdmin" class="dropdown-item" routerLink="/admin/product">Dashboard</a>
+                            <a class="dropdown-item" href="javascript:void(0);" (click)="logout($event)">Logout</a>
                         </div>
                     </div>
                 </div>

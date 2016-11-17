@@ -6,12 +6,21 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap'
 
-import {  ProductService, IProduct } from '../../../../feat/shared/product.service'
+import { ProductService, IProduct } from '../../../../feat/shared/product.service'
+
+const io = require('socket.io-client/socket.io');
+declare const apiServer;
+
+export interface ITicker { 
+    title: string;
+    class?: string;
+    message: string;
+}
 
 @Component({
     template: require('./product-list.component.html')
 })
-export class ProductListComponent { 
+export class ProductListComponent {
 
     private _subs: Array<Subscription> = [];
     private products: Array<IProduct> = [];
@@ -19,13 +28,17 @@ export class ProductListComponent {
     private itemPerPage: number = 10;
     private totalItems: number;
 
+    private tickers: Array<ITicker> = []
+
     constructor(private productSvc: ProductService) { }
 
     ngOnInit() {
+        this.initTicker();
+        
         this.getProducts(0, this.itemPerPage);
     }
 
-    private getProducts(start: number, end: number) { 
+    private getProducts(start: number, end: number) {
         this._subs.push(
             this.productSvc.getProducts(start, end)
                 .subscribe((res: any) => {
@@ -37,9 +50,9 @@ export class ProductListComponent {
         );
     }
 
-    private pageChanged(pageNumber: any) { 
+    private pageChanged(pageNumber: any) {
         this.currentPage = pageNumber.page;
-        this.getProducts((this.currentPage - 1)  * this.itemPerPage, this.itemPerPage);
+        this.getProducts((this.currentPage - 1) * this.itemPerPage, this.itemPerPage);
     }
 
     private deleteProduct(id: string) {
@@ -51,7 +64,33 @@ export class ProductListComponent {
                     }
                 })
         }
-    }    
+    }
+
+    private initTicker() {
+        let socket = io.connect(`${apiServer}`);
+
+        socket.on('product:added', (product) => {
+            this.tickers.push({
+                title: 'Product Added',
+                message: `A new product added - ${product.name}`
+            })
+        });
+
+        socket.on('product:updated', (product) => {
+            this.tickers.push({
+                title: 'Product Updated',
+                message: `A product updated - ${product.name}`
+            })
+        });
+
+        socket.on('product:deleted', (product) => {
+            this.tickers.push({
+                title: 'Product Deleted',
+                'class': '',
+                message: `A new product added - ${product.name}`
+            })
+        });
+    }
 }
 
 const routes: Routes = [
