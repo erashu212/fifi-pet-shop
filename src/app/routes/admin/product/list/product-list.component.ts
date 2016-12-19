@@ -8,7 +8,7 @@ import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap'
 
 import { ProductService, IProduct } from '../../../../feat/shared/product.service'
 
-const io = require('socket.io-client/socket.io');
+const io = require('socket.io-client');
 declare const apiServer;
 
 export interface ITicker { 

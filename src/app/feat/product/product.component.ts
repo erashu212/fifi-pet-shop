@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
-const io = require('socket.io-client/socket.io');
+const io = require('socket.io-client');
 
 import { ToasterService } from 'angular2-toaster/angular2-toaster';
 
