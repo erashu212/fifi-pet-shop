@@ -19,7 +19,7 @@
     "url": "https://github.com/erashu212/fifi-pet-shop/issues"
   },
   "dependencies": {
-    "@angular/common": "~2.3.1",
+    "@angular/common": "~2.4.0",
     "@angular/compiler": "~2.3.1",
     "@angular/core": "~2.3.1",
     "@angular/forms": "~2.3.1",
