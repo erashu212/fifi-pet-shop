@@ -75,7 +75,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1",
-    "webpack-merge": "^2.0.0"
+    "webpack-merge": "^2.6.0"
   },
   "engines": {
     "node": ">=6.9.0",
