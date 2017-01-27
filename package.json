@@ -40,7 +40,7 @@
     "@types/core-js": "^0.9.34",
     "@types/jasmine": "^2.5.35",
     "@types/jquery": "^2.0.33",
-    "@types/lodash": "^4.14.44",
+    "@types/lodash": "^4.14.51",
     "@types/node": "^6.0.45",
     "angular2-router-loader": "^0.3.3",
     "angular2-template-loader": "^0.6.0",
