@@ -72,7 +72,7 @@
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "typescript": "^2.0.3",
-    "url-loader": "^0.5.7",
+    "url-loader": "^0.5.8",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1",
     "webpack-merge": "^2.0.0"
