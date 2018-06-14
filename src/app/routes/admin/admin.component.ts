@@ -18,10 +18,10 @@ const routes: Routes = [
                 path: 'product',
                 loadChildren: './product/product.component#ProductModule'
             },
-            {
-                path: 'user/...',
-                loadChildren: './user/user.component#UserModule'
-            }
+            // {
+            //     path: 'user/...',
+            //     loadChildren: './user/user.component#UserModule'
+            // }
         ]
     }
 ];
