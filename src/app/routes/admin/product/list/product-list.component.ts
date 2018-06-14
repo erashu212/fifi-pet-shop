@@ -1,14 +1,15 @@
 import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
-import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap'
+import { PaginationModule } from 'ngx-bootstrap'
 
 import { ProductService, IProduct } from '../../../../feat/shared/product.service'
 
-const io = require('socket.io-client');
+import * as io from 'socket.io-client';
 declare const apiServer;
 
 export interface ITicker { 
@@ -18,7 +19,7 @@ export interface ITicker {
 }
 
 @Component({
-    template: require('./product-list.component.html')
+    templateUrl: './product-list.component.html'
 })
 export class ProductListComponent {
 
@@ -102,11 +103,12 @@ const routes: Routes = [
 
 @NgModule({
     declarations: [ ProductListComponent ],
-    exports: [ ProductListComponent, RouterModule ],
+    exports: [ ProductListComponent, RouterModule, FormsModule ],
     imports: [
         CommonModule,
+        FormsModule,
         RouterModule.forChild(routes),
-        PaginationModule
+        PaginationModule.forRoot()
     ]
 })
 export class ProductListModule { }

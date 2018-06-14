@@ -3,7 +3,9 @@ import { Http, RequestMethod } from '@angular/http';
 
 import { httpRequest } from '../../core/httpRequest';
 
-const _ = require('lodash');
+import * as _ from 'lodash';
+
+import { environment } from '../../../environments/environment'
 
 export interface IProduct { 
     name: string;

@@ -9,7 +9,7 @@ import { ToasterService } from 'angular2-toaster/angular2-toaster';
 
 @Component({
     selector: 'register',
-    template: require('./register.component.html')
+    templateUrl: './register.component.html'
 })
 export class RegisterComponent {
     private registerForm: FormGroup;

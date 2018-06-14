@@ -8,7 +8,7 @@ import { ProductServiceModule, IProduct, ProductService } from '../../shared/pro
 
 @Component({
     selector: 'product-form',
-    template: require('./product-form.component.html')
+    templateUrl: './product-form.component.html'
 })
 export class ProductFormComponent {
     @Input() id: string = null;

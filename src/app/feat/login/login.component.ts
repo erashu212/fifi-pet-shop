@@ -11,7 +11,7 @@ import { UserService, IUserResponse, IUser } from '../shared/user.service';
 
 @Component({
     selector: 'login',
-    template: require('./login.component.html')
+    templateUrl: './login.component.html'
 })
 export class LoginComponent {
 

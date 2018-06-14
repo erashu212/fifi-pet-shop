@@ -3,15 +3,19 @@ import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/c
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, BrowserXhr } from '@angular/http';
 import { BrowserModule, platformBrowser } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
-import { ToasterModule } from 'angular2-toaster/angular2-toaster';
+import { ToasterModule, ToasterService } from 'angular2-toaster/angular2-toaster';
 
 import { CORSBrowserXHr } from './core/httpRequest';
 
 import { AppComponent } from './app.component';
 
 import { ProductModule } from './routes/product/product.component'
+import { LoginModule } from './routes/login/login.component'
+import { RegisterModule } from './routes/register/register.component'
+import { AdminModule } from './routes/admin/admin.component'
 
 import { appRoutes, appRoutingProviders } from './routing';
 
@@ -31,12 +35,17 @@ import { UserServiceModule } from './feat/shared/user.service';
         ToasterModule
     ],
     providers: [
+        ToasterService,
         { provide: BrowserXhr, useClass: CORSBrowserXHr },
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         appRoutingProviders
     ],
     exports: [
-        RouterModule
+        RouterModule,
+        ToasterModule,
+        ProductModule,
+        UserServiceModule,
+        ToasterModule
     ],
     bootstrap: [AppComponent]
 })

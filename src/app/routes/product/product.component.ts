@@ -15,11 +15,12 @@ const routes: Routes = [
 @NgModule({
   declarations: [ ProductRouteComponent ],
   imports: [
-    RouterModule.forRoot(routes),
-    Module
+    Module,
+    RouterModule.forRoot(routes)
   ],
   exports: [
-    RouterModule
+    RouterModule,
+    Module
   ]
 })
 export class ProductModule { }

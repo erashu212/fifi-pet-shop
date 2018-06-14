@@ -1,8 +1,10 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ProductComponent } from './product/product.component'
+
 @Component({
-    template: require('./admin.component.html')
+    templateUrl: './admin.component.html'
 })
 export class AdminComponent { 
 }
@@ -16,10 +18,10 @@ const routes: Routes = [
                 path: 'product',
                 loadChildren: './product/product.component#ProductModule'
             },
-            // {
-            //     path: 'user/...',
-            //     loadChildren: './user/user.component#UserModule'
-            // }
+            {
+                path: 'user/...',
+                loadChildren: './user/user.component#UserModule'
+            }
         ]
     }
 ];

@@ -6,8 +6,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { UserService, IUser } from './feat/shared/user.service'
 
 @Component({
-    selector: 'app',
-    template: require('./app.component.html')
+    selector: 'app-root',
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
 

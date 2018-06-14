@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
-const io = require('socket.io-client');
+import * as io from 'socket.io-client';
 
 import { ToasterService } from 'angular2-toaster/angular2-toaster';
 
@@ -16,7 +16,7 @@ declare const apiServer;
 
 @Component({
     selector: 'product',
-    template: require('./product.component.html')
+    templateUrl: './product.component.html'
 })
 export class ProductComponent {
 
