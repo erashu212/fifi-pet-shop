@@ -1,0 +1,21 @@
+<div class="container">
+  <form class="col-md-5 offset-md-4" novalidate [formGroup]="loginForm" (ngSubmit)="login($event);">
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-3 col-form-label">Username</label>
+      <div class="col-sm-9">
+        <input type="text" formControlName="username" class="form-control" id="inputEmail3" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
+      <div class="col-sm-9">
+        <input type="password" formControlName="password" class="form-control" placeholder="Password">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-3 col-sm-9">
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
+      </div>
+    </div>
+  </form>
+</div>
