@@ -5,7 +5,8 @@ install:
 script:
   - npm run build
   
-
+before_deploy:
+  - cd dist
 deploy:
   provider: gcs
   access_key_id: "GOOGUS37YFNZQS4MJC2ZI5YY"
