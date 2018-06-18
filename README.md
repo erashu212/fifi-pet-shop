@@ -1,6 +1,6 @@
 
 
-# FifiPetShopUihttps://travis-ci.org/erashu212/fifi-pet-shop.svg?branch=master
+# FifiPetShopUi ![Build Status](https://travis-ci.org/erashu212/fifi-pet-shop.svg?branch=master)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.8.
 
