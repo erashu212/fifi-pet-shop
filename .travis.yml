@@ -12,7 +12,7 @@ deploy:
   provider: gcs
   access_key_id: "GOOGUS37YFNZQS4MJC2ZI5YY"
   secret_access_key: "1QZq0KMVRKCJen89HPrNy/KlX0Gjv7eCDhztCM0i"
-  bucket: "techx-7"
+  bucket: "techx"
   skip_cleanup: true
   acl: public-read
   local-dir: dist
